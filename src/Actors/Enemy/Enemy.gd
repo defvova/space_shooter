@@ -21,9 +21,10 @@ func _on_Enemy_body_entered(body: Node) -> void:
 	ARMOR -= 1
 	if ARMOR <= 0:
 		score_up()
+		create_explosion()
 		queue_free()
 
-func _exit_tree() -> void:
+func create_explosion() -> void:
 	var explosion = ExplosionEffect.instance()
 	var main = get_tree().current_scene
 	main.add_child(explosion)
