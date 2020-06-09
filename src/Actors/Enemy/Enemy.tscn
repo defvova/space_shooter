@@ -9,7 +9,18 @@ script = ExtResource( 2 )
 
 [node name="Ship" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -5, -6, -3, -8, 3, -8, 6, -5, 6, 5, 3, 8, -3, 8, -5, 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 0.5, 4.17233e-07 )
+scale = Vector2( 0.55, 0.8 )
 [connection signal="body_entered" from="." to="." method="_on_Enemy_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="queue_free"]
