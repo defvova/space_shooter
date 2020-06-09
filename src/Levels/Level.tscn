@@ -1,4 +1,7 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/Actors/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Actors/Enemy/Enemy.tscn" type="PackedScene" id=2]
 
 [node name="Level" type="Node"]
 
@@ -10,3 +13,9 @@ __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
 }
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 30, 82 )
+
+[node name="Enemy" parent="." instance=ExtResource( 2 )]
+position = Vector2( 299.56, 82 )
