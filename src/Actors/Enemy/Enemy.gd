@@ -4,6 +4,8 @@ export (int) var SPEED = 40
 export (int) var ARMOR = 3
 export (int) var SCORE_UP = 10
 
+const ExplosionEffect: Object = preload("res://src/Actors/ExplosionEffect.tscn")
+
 func _process(delta: float) -> void:
 	position.x -= SPEED * delta
 
@@ -20,3 +22,9 @@ func _on_Enemy_body_entered(body: Node) -> void:
 	if ARMOR <= 0:
 		score_up()
 		queue_free()
+
+func _exit_tree() -> void:
+	var explosion = ExplosionEffect.instance()
+	var main = get_tree().current_scene
+	main.add_child(explosion)
+	explosion.global_position = global_position
