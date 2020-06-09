@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-export (int) var SPEED = 100
+export (int) var SPEED: int = 100
 
-var Bullet = preload('res://src/Actors/Player/Bullet.tscn')
+var Bullet: Object = preload('res://src/Actors/Player/Bullet.tscn')
 var velocity: Vector2 = Vector2.ZERO
 
 func get_inputs() -> void:
