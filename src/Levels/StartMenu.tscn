@@ -32,8 +32,8 @@ __meta__ = {
 [node name="Label" type="Label" parent="CenterContainer"]
 margin_left = 121.0
 margin_top = 82.0
-margin_right = 198.0
+margin_right = 199.0
 margin_bottom = 97.0
 custom_fonts/font = SubResource( 1 )
-text = "Press space to start
-Press escape to quit"
+text = "Press space to Start
+Press escape to Quit"

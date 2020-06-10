@@ -1,0 +1,98 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/PixelRPG.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/Levels/GameOver.gd" type="Script" id=2]
+[ext_resource path="res://src/Levels/StarParticle.tscn" type="PackedScene" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 6
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 6
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 6
+font_data = ExtResource( 1 )
+
+[node name="GameOver" type="Node"]
+script = ExtResource( 2 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="StarParticle" parent="." instance=ExtResource( 3 )]
+
+[node name="GameOverContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+margin_top = 69.0
+margin_bottom = 79.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverLabel" type="Label" parent="GameOverContainer"]
+margin_left = 140.0
+margin_top = 2.0
+margin_right = 179.0
+margin_bottom = 8.0
+custom_fonts/font = SubResource( 1 )
+text = "Game Over"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighscoreContainer" type="CenterContainer" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -3.0
+margin_bottom = 3.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="HighscoreLabel" type="Label" parent="HighscoreContainer"]
+margin_left = 135.0
+margin_right = 184.0
+margin_bottom = 6.0
+custom_fonts/font = SubResource( 2 )
+text = "Highscore : 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PresskeyContainer" type="CenterContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -19.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="PressKeyLabel" type="Label" parent="PresskeyContainer"]
+margin_left = 82.0
+margin_top = 6.0
+margin_right = 237.0
+margin_bottom = 12.0
+custom_fonts/font = SubResource( 3 )
+text = "Press space to return to the main menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}

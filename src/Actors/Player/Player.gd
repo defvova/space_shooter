@@ -6,6 +6,8 @@ const Bullet: Object = preload('res://src/Actors/Player/Bullet.tscn')
 const ExplosionEffect: Object = preload("res://src/Actors/ExplosionEffect.tscn")
 var velocity: Vector2 = Vector2.ZERO
 
+signal player_death
+
 func get_inputs() -> void:
 	velocity.y = Input.get_action_strength('ui_down') - Input.get_action_strength('ui_up')
 	velocity = velocity.normalized() * SPEED
@@ -22,6 +24,7 @@ func _exit_tree() -> void:
 	var main = get_tree().current_scene
 	main.add_child(explosion)
 	explosion.global_position = global_position
+	emit_signal('player_death')
 
 func fire_bullet() -> void:
 	var bullet = Bullet.instance()
