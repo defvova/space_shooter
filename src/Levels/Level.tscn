@@ -4,17 +4,7 @@
 [ext_resource path="res://src/Actors/Enemy/EnemySpawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Levels/Level.gd" type="Script" id=3]
 [ext_resource path="res://assets/PixelRPG.ttf" type="DynamicFontData" id=4]
-
-[sub_resource type="ParticlesMaterial" id=1]
-emission_shape = 2
-emission_box_extents = Vector3( 1, 90, 1 )
-flag_disable_z = true
-spread = 0.0
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = -100.0
-initial_velocity_random = 0.5
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
+[ext_resource path="res://src/Levels/StarParticle.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=2]
 size = 6
@@ -34,16 +24,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StarParticle" type="Particles2D" parent="."]
-visible = false
-position = Vector2( 320, 90 )
-amount = 200
-lifetime = 5.0
-preprocess = 7.0
-process_material = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="StarParticle" parent="." instance=ExtResource( 5 )]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 30, 82 )
@@ -59,5 +40,6 @@ text = "Score = 0"
 align = 1
 valign = 1
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
