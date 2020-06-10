@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="space_shooter"
 run/main_scene="res://src/Levels/StartMenu.tscn"
-config/icon="res://icon.png"
+config/icon="res://assets/Ship.png"
 
 [autoload]
 
