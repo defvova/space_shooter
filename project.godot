@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Music="*res://src/Music.tscn"
+SaveAndLoad="*res://src/SaveAndLoad.gd"
 
 [display]
 
