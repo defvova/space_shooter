@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Actors/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Actors/Enemy/EnemySpawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Levels/Level.gd" type="Script" id=3]
+[ext_resource path="res://assets/PixelRPG.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 2
@@ -14,6 +15,10 @@ initial_velocity = -100.0
 initial_velocity_random = 0.5
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
+
+[sub_resource type="DynamicFont" id=2]
+size = 6
+font_data = ExtResource( 4 )
 
 [node name="Level" type="Node" groups=[
 "Level",
@@ -30,6 +35,7 @@ __meta__ = {
 }
 
 [node name="StarParticle" type="Particles2D" parent="."]
+visible = false
 position = Vector2( 320, 90 )
 amount = 200
 lifetime = 5.0
@@ -48,9 +54,10 @@ position = Vector2( 320, 0 )
 [node name="ScoreLabel" type="Label" parent="."]
 margin_right = 320.0
 margin_bottom = 14.0
+custom_fonts/font = SubResource( 2 )
 text = "Score = 0"
 align = 1
+valign = 1
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
