@@ -1,6 +1,8 @@
 extends Node
 
 var score: int = 0 setget set_score
+var speed_up_velocity: int = 0
+var speed_up_spawner = 2
 
 onready var score_label = $ScoreLabel
 
@@ -13,7 +15,9 @@ func update_save_data():
 
 	if score > save_data.highscore:
 		save_data.highscore = score
-		SaveAndLoad.save_data_to_file(save_data)
+	save_data.last_score = score
+
+	SaveAndLoad.save_data_to_file(save_data)
 
 func _on_Player_player_death() -> void:
 	update_save_data()

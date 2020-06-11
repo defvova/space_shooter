@@ -3,7 +3,8 @@ extends Node
 const SAVE_DATA_PATH = 'res://save_data.json'
 
 var default_data = {
-	highscore = 0
+	highscore = 0,
+	last_score = 0
 }
 
 func save_data_to_file(data) -> void:

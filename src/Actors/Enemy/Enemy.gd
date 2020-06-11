@@ -3,18 +3,33 @@ extends Area2D
 export (int) var SPEED = 40
 export (int) var ARMOR = 3
 export (int) var SCORE_UP = 10
+export (int) var MAX_SPEED_UP = 100
+export (int) var SPEED_UP_BY = 2
 
 const ExplosionEffect: Object = preload("res://src/Actors/ExplosionEffect.tscn")
 const HitEffect = preload("res://src/Actors/HitEffect.tscn")
 
 func _process(delta: float) -> void:
-	position.x -= SPEED * delta
+	var main = get_parent()
+	var speed_velocity: int = 0
+
+	if main.is_in_group('Level'):
+		speed_velocity = main.speed_up_velocity
+
+	position.x -= (SPEED + speed_velocity) * delta
 
 func score_up() -> void:
-	var main = get_tree().current_scene
+	var main = get_parent()
 
 	if main.is_in_group('Level'):
 		main.score += SCORE_UP
+		var speed = main.speed_up_velocity
+
+		if speed < MAX_SPEED_UP:
+			main.speed_up_velocity += SPEED_UP_BY
+
+			if speed > (MAX_SPEED_UP / 3):
+				main.speed_up_spawner = 1
 
 func _on_Enemy_body_entered(body: Node) -> void:
 	body.queue_free()
@@ -28,12 +43,12 @@ func _on_Enemy_body_entered(body: Node) -> void:
 
 func create_explosion() -> void:
 	var explosion = ExplosionEffect.instance()
-	var main = get_tree().current_scene
-	main.add_child(explosion)
+
+	get_parent().call_deferred('add_child', explosion)
 	explosion.global_position = global_position
 
 func create_hit_effect() -> void:
 	var hit_effect = HitEffect.instance()
-	var main = get_tree().current_scene
-	main.add_child(hit_effect)
+
+	get_parent().call_deferred('add_child', hit_effect)
 	hit_effect.global_position = global_position
