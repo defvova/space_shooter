@@ -4,6 +4,7 @@
 [ext_resource path="res://src/Actors/Enemy/Enemy.gd" type="Script" id=2]
 
 [node name="Enemy" type="Area2D"]
+modulate = Color( 0.968627, 0.517647, 0.219608, 1 )
 collision_layer = 2
 script = ExtResource( 2 )
 
@@ -22,5 +23,9 @@ __meta__ = {
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 0.5, 4.17233e-07 )
 scale = Vector2( 0.55, 0.8 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 [connection signal="body_entered" from="." to="." method="_on_Enemy_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="queue_free"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

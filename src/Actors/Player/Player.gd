@@ -4,6 +4,7 @@ export (int) var SPEED: int = 100
 
 const Bullet: Object = preload('res://src/Actors/Player/Bullet.tscn')
 const ExplosionEffect: Object = preload("res://src/Actors/ExplosionEffect.tscn")
+const HitEffect = preload("res://src/Actors/HitEffect.tscn")
 var velocity: Vector2 = Vector2.ZERO
 var screen_size
 
@@ -43,3 +44,25 @@ func fire_bullet() -> void:
 func _on_Area2D_area_entered(area: Area2D) -> void:
 	area.queue_free()
 	queue_free()
+
+func create_explosion() -> void:
+	var explosion = ExplosionEffect.instance()
+
+	get_parent().call_deferred('add_child', explosion)
+	explosion.global_position = global_position
+
+func create_hit_effect() -> void:
+	var hit_effect = HitEffect.instance()
+
+	get_parent().call_deferred('add_child', hit_effect)
+	hit_effect.global_position = global_position
+
+func _on_Area2D_body_entered(body: Node) -> void:
+	print(body)
+	if body.collision_mask == 1:
+		body.queue_free()
+		create_hit_effect()
+		create_explosion()
+
+		queue_free()
+

@@ -3,6 +3,7 @@ extends Node
 var score: int = 0 setget set_score
 var speed_up_velocity: int = 0
 var speed_up_spawner = 2
+var enemy_lvl = 3
 
 onready var score_label = $ScoreLabel
 
